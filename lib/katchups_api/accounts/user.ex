@@ -9,7 +9,10 @@ defmodule KatchupsApi.Accounts.User do
     field :favorite_restaurants, {:array, :string}
     field :first_name, :string
     field :last_name, :string
+    field :password, :string, virtual: true
+    field :password_confirmation, :string, virtual: true
     field :password_hash, :string
+    field :role, :string, default: "user" 
 
     timestamps()
   end
@@ -21,7 +24,8 @@ defmodule KatchupsApi.Accounts.User do
       :first_name,
       :last_name,
       :email,
-      :password_hash,
+      :password,
+      :password_confirmation,
       :avatar,
       :favorite_friends,
       :favorite_restaurants
@@ -30,10 +34,19 @@ defmodule KatchupsApi.Accounts.User do
       :first_name,
       :last_name,
       :email,
-      :password_hash,
-      :avatar,
-      :favorite_friends,
-      :favorite_restaurants
-    ])
+      :password,
+      :password_confirmation
+      :avatar
+    ]) |> unique_constraint([
+    :email
+    ]) |> validate_format(:email, ~r/@/)
+    |> update_change(:email, &String.downcase(&1))
+    |> validate_length(:password, min: 8, max: 100)
+    |> validate_confirmation(:passowrd)
+    |> hash_password
+  end
+
+  defp hash_password(changeset) do
+    changeset
   end
 end
