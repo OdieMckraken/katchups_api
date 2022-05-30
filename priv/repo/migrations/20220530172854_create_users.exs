@@ -10,8 +10,10 @@ defmodule KatchupsApi.Repo.Migrations.CreateUsers do
       add :avatar, :string
       add :favorite_friends, {:array, :integer}
       add :favorite_restaurants, {:array, :string}
+      add :role, :string
 
       timestamps()
     end
+    create(unique_index(:users, [:email]))
   end
 end
