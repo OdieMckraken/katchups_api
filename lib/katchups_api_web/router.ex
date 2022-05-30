@@ -5,8 +5,14 @@ defmodule KatchupsApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", KatchupsApiWeb do
+  scope "/api" do
     pipe_through :api
+
+    forward("/graphql", Absinthe.Plug, schema: KatchupsApiWeb.Schema)
+
+    if Mix.env() == :dev do 
+      forward("/graphiql", Absinthe.Plug.GraphiQL, schema: KatchupsApiWeb.Schema)
+    end
   end
 
   # Enables LiveDashboard only for development
