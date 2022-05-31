@@ -5,8 +5,8 @@ defmodule KatchupsApi.Accounts.User do
   schema "users" do
     field :avatar, :string
     field :email, :string
-    field :favorite_friends, {:array, :integer}
-    field :favorite_restaurants, {:array, :string}
+    field :favorite_friends, {:array, :integer}, default: []
+    field :favorite_restaurants, {:array, :string}, default: []
     field :first_name, :string
     field :last_name, :string
     field :password, :string, virtual: true
