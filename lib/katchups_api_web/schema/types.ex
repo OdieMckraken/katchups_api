@@ -1,6 +1,6 @@
-defmodule KatchupsGraphqlApiWeb.Schema.Types do
+defmodule KatchupsApiWeb.Schema.Types do
   use Absinthe.Schema.Notation
-  alias KatchupsGraphqlApiWeb.Schema.Types
+  alias KatchupsApiWeb.Schema.Types
 
   import_types(Types.UserType)
 end

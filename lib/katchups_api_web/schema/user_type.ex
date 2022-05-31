@@ -1,4 +1,4 @@
-defmodule KatchupsApiWeb.Schema.Type.UserType do
+defmodule KatchupsApiWeb.Schema.Types.UserType do
   use Absinthe.Schema.Notation
 
   object :user_type do
