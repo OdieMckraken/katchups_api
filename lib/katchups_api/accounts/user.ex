@@ -12,7 +12,7 @@ defmodule KatchupsApi.Accounts.User do
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
     field :password_hash, :string
-    field :role, :string, default: "user" 
+    field :role, :string, default: "user"
 
     timestamps()
   end
@@ -37,9 +37,11 @@ defmodule KatchupsApi.Accounts.User do
       :password,
       :password_confirmation
       # :avatar
-    ]) |> unique_constraint([
-    :email
-    ]) |> validate_format(:email, ~r/@/)
+    ])
+    |> unique_constraint([
+      :email
+    ])
+    |> validate_format(:email, ~r/@/)
     |> update_change(:email, &String.downcase(&1))
     |> validate_length(:password, min: 8, max: 100)
     |> validate_confirmation(:passowrd)
@@ -53,5 +55,4 @@ defmodule KatchupsApi.Accounts.User do
   defp hash_password(changeset) do
     changeset
   end
-
 end

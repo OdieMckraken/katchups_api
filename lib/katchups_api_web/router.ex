@@ -10,7 +10,7 @@ defmodule KatchupsApiWeb.Router do
 
     forward("/graphql", Absinthe.Plug, schema: KatchupsApiWeb.Schema)
 
-    if Mix.env() == :dev do 
+    if Mix.env() == :dev do
       forward("/graphiql", Absinthe.Plug.GraphiQL, schema: KatchupsApiWeb.Schema)
     end
   end
