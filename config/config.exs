@@ -37,6 +37,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Guardian config details
+config :katchups_api, KatchupsApi.Guardian,
+       issuer: "katchups_api",
+       secret_key: "wNAP5AZ2AeIfpWNsnb6H4zLuhvVIhJ2puPMdc//7OjfsXnZmf+E2eIolncSaJiV+"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
