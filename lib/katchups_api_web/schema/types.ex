@@ -3,4 +3,5 @@ defmodule KatchupsApiWeb.Schema.Types do
   alias KatchupsApiWeb.Schema.Types
 
   import_types(Types.UserType)
+  import_types(Types.SessionType)
 end
