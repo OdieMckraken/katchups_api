@@ -1,12 +1,13 @@
 defmodule KatchupsApiWeb.Schema do
   use Absinthe.Schema
   alias KatchupsApiWeb.Resolvers
-  # import types
+  alias KatchupsApiWeb.Schema.Middleware
   import_types(KatchupsApiWeb.Schema.Types)
 
   query do
     @desc "Get all users"
     field :users, list_of(:user_type) do
+      middleware(Middleware.Authorize, :any)
       resolve(&Resolvers.UserResolver.users/3)
     end
   end
