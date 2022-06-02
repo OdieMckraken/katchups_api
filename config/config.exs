@@ -38,6 +38,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 # Guardian config details
+
 guardian_secret_key =
     System.get_env("GUARDIAN_SECRET_KEY") ||
       raise """

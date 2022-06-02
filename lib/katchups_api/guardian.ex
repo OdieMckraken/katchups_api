@@ -1,6 +1,7 @@
 defmodule KatchupsApi.Guardian do
   use Guardian, otp_app: :katchups_api
   alias KatchupsApi.Accounts
+
   alias KatchupsApi.Accounts.User
 
   def subject_for_token(%User{id: id}, _claims) do
