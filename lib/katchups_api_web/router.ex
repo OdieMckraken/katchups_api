@@ -1,8 +1,11 @@
 defmodule KatchupsApiWeb.Router do
   use KatchupsApiWeb, :router
 
+  alias KatchupsApiWeb.Plugs.Context
+
   pipeline :api do
     plug :accepts, ["json"]
+    plug Context
   end
 
   scope "/api" do
