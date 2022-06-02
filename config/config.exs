@@ -38,9 +38,14 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 # Guardian config details
+guardian_secret_key =
+    System.get_env("GUARDIAN_SECRET_KEY") ||
+      raise """
+      environment variable GUARDIAN_SECRET_KEY is missing.
+      """
 config :katchups_api, KatchupsApi.Guardian,
        issuer: "katchups_api",
-       secret_key: "wNAP5AZ2AeIfpWNsnb6H4zLuhvVIhJ2puPMdc//7OjfsXnZmf+E2eIolncSaJiV+"
+       secret_key: guardian_secret_key
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
