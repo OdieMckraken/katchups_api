@@ -1,8 +1,7 @@
 defmodule KatchupsApiWeb.Resolvers.UserResolver do
   alias KatchupsApi.Accounts
 
-  def users(_, _, %{context: context}) do
-    IO.inspect(context)
+  def users(_, _, %{context: _context}) do
     {:ok, Accounts.list_users()}
   end
 
