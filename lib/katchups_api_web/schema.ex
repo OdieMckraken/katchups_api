@@ -10,6 +10,12 @@ defmodule KatchupsApiWeb.Schema do
       middleware(Middleware.Authorize, :any)
       resolve(&Resolvers.UserResolver.users/3)
     end
+
+    @desc "Get friends"
+    field :friends, list_of(:friend_type) do
+      middleware(Middleware.Authorize, :any)
+      resolve(&Resolvers.FriendResolver.friends/3)
+    end
   end
 
   mutation do
@@ -23,6 +29,12 @@ defmodule KatchupsApiWeb.Schema do
     field :login_user, type: :session_type do
       arg(:input, non_null(:session_input_type))
       resolve(&Resolvers.SessionResolver.login_user/3)
+    end
+
+    @desc "Add a friend"
+    field :create_friendship, type: :friend_type do
+      arg(:input, non_null(:friend_input_type))
+      resolve(&Resolvers.FriendResolver.add_friend/3)
     end
   end
 
