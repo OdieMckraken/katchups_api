@@ -3,8 +3,7 @@ defmodule KatchupsApiWeb.Schema.Types.FriendType do
   use Absinthe.Ecto, repo: KatchupsApi.Repo
 
   object :friend_type do
-    field(:from_user, :user_type, resolve: assoc(:from_user))
-    field(:to_user, :user_type, resolve: assoc(:to_user))
+    field(:friend, :user_type)
     field(:status, :string)
     field(:id, :id)
   end
