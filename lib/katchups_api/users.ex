@@ -23,7 +23,9 @@ defmodule KatchupsApi.Users do
     friends = Friendship 
       |> where([f], f.from_user_id == ^user_id or f.to_user_id == ^user_id)
       |> where([f], f.status == "confirmed")
-    Repo.all(friends)
+      Repo.all(friends)
+      |> Repo.preload(:to_user)
+      |> Repo.preload(:from_user)
   end
 
   @doc """
