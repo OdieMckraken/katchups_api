@@ -16,6 +16,12 @@ defmodule KatchupsApiWeb.Schema do
       middleware(Middleware.Authorize, :any)
       resolve(&Resolvers.FriendResolver.friends/3)
     end
+
+    @desc "Get katchups"
+    field :katchups, list_of(:katchup_type) do
+      middleware(Middleware.Authorize, :any)
+      resolve(&Resolvers.KatchupResolver.katchups/3)
+    end
   end
 
   mutation do
@@ -35,6 +41,12 @@ defmodule KatchupsApiWeb.Schema do
     field :create_friendship, type: :friend_type do
       arg(:input, non_null(:friend_input_type))
       resolve(&Resolvers.FriendResolver.add_friend/3)
+    end
+
+    @desc "New katchup"
+    field :create_katchup, type: :katchup_type do
+      arg(:input, non_null(:katchup_input_type))
+      resolve(&Resolvers.KatchupResolver.new_katchup/3)
     end
   end
 
