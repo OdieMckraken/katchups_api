@@ -15,7 +15,7 @@ defmodule KatchupsApiWeb.Resolvers.FriendResolver do
     Users.create_friendship(user, friend_user)
   end
 
-  def define_friends(friendship, user_id) do
+  defp define_friends(friendship, user_id) do
     from = friendship.from_user_id
     to = friendship.to_user_id
     case user_id do

@@ -44,7 +44,7 @@ defmodule KatchupsApi.Accounts.User do
     |> validate_format(:email, ~r/@/)
     |> update_change(:email, &String.downcase(&1))
     |> validate_length(:password, min: 8, max: 100)
-    |> validate_confirmation(:passowrd)
+    |> validate_confirmation(:password)
     |> hash_password
   end
 
