@@ -17,7 +17,7 @@ defmodule KatchupsApiWeb.Schema.Types.UserType do
     field(:last_name, non_null(:string))
     field(:password, non_null(:string))
     field(:password_confirmation, non_null(:string))
-    field(:favorite_friends, non_null(list_of(:id)))
-    field(:favorite_restaurants, non_null(list_of(:id)))
+    field(:favorite_friends, list_of(:id))
+    field(:favorite_restaurants, list_of(:id))
   end
 end
