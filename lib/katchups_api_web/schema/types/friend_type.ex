@@ -11,6 +11,6 @@ defmodule KatchupsApiWeb.Schema.Types.FriendType do
   input_object :friend_input_type do
     field(:from_user_id, non_null(:id))
     field(:to_user_id, non_null(:id))
-    field(:status, non_null(:string))
+    field(:status, :string)
   end
 end
