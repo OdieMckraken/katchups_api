@@ -16,6 +16,5 @@ defmodule KatchupsApi.Repo.Migrations.CreateKatchups do
 
       timestamps()
     end
-    create unique_index(:katchups, [:requester_id, :addressee_id])
   end
 end

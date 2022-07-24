@@ -1,6 +1,5 @@
 defmodule KatchupsApiWeb.Schema.Types.KatchupType do
   use Absinthe.Schema.Notation
-  use Absinthe.Ecto, repo: KatchupsApi.Repo
 
   import_types Absinthe.Type.Custom
 
