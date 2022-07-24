@@ -9,6 +9,7 @@ defmodule KatchupsApi.Users do
 
   alias KatchupsApi.Repo
   alias KatchupsApi.Users.Friendship
+  alias KatchupsApi.Users.Katchup
 
   @doc """
   Returns the list of friendships.
@@ -56,11 +57,9 @@ defmodule KatchupsApi.Users do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_friendship(user, friend_user) do
+  def create_friendship(attrs \\ %{}) do
     %Friendship{}
-    |> change(status: "pending")
-    |> put_assoc(:from_user, user)
-    |> put_assoc(:to_user, friend_user)
+    |> Friendship.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -125,7 +124,9 @@ defmodule KatchupsApi.Users do
   def list_katchups(user_id) do
     katchups = Katchup 
       |> where([k], k.requester_id == ^user_id or k.addressee_id == ^user_id)
-    Repo.all(katchups)
+      Repo.all(katchups)
+      |> Repo.preload(:requester) 
+      |> Repo.preload(:addressee)
   end
 
   @doc """

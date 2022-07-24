@@ -12,7 +12,7 @@ defmodule KatchupsApiWeb.Resolvers.FriendResolver do
   def add_friend(_, %{input: input}, _) do
     user = Accounts.get_user!(input.from_user_id)
     friend_user = Accounts.get_user!(input.to_user_id)
-    Users.create_friendship(user, friend_user)
+    Users.create_friendship(input)
   end
 
   defp define_friends(friendship, user_id) do

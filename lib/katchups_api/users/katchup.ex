@@ -1,6 +1,7 @@
 defmodule KatchupsApi.Users.Katchup do
   use Ecto.Schema
   import Ecto.Changeset
+  alias KatchupsApi.Accounts.User
 
   schema "katchups" do
     field :addressee_list, {:array, :string}, default: []

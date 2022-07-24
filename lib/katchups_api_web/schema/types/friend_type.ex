@@ -1,6 +1,5 @@
 defmodule KatchupsApiWeb.Schema.Types.FriendType do
   use Absinthe.Schema.Notation
-  use Absinthe.Ecto, repo: KatchupsApi.Repo
 
   object :friend_type do
     field(:friend, :user_type)
