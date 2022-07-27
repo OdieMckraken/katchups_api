@@ -4,6 +4,7 @@ defmodule KatchupsApiWeb.Schema.Types.UserType do
   object :user_type do
     field(:id, :id)
     field(:email, :string)
+    field(:avatar, :string)
     field(:first_name, :string)
     field(:last_name, :string)
     field(:role, :string)
@@ -13,6 +14,7 @@ defmodule KatchupsApiWeb.Schema.Types.UserType do
 
   input_object :user_input_type do
     field(:email, non_null(:string))
+    field(:avatar, non_null(:string))
     field(:first_name, non_null(:string))
     field(:last_name, non_null(:string))
     field(:password, non_null(:string))

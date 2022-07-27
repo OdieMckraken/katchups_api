@@ -31,12 +31,12 @@ defmodule KatchupsApi.Accounts.User do
       :favorite_restaurants
     ])
     |> validate_required([
+      :avatar,
       :first_name,
       :last_name,
       :email,
       :password,
       :password_confirmation
-      # :avatar
     ])
     |> unique_constraint([
       :email
